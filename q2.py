@@ -22,9 +22,9 @@ if __name__=='__main__':
 	img=cv2.imread('q1_input.jpg')
 	img_blue,img_green,img_red=cv2.split(img)
 
-	gamma_transform(img_blue,1.2)
-	gamma_transform(img_green,1.2)
-	gamma_transform(img_red,1.2)
+	gamma_transform(img_blue,5)
+	gamma_transform(img_green,5)
+	gamma_transform(img_red,5)
 
 	final1=cv2.merge((img_blue,img_green,img_red))
 	cv2.imwrite('q2_output_1.jpg',final1)
