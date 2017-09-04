@@ -20,14 +20,10 @@ def hist_equalise(img):
 
 	#transformed image
 
-	#transformed_img=np.zeros([N,M])
-
 	for row in range(N):
 		for col in range(M):
 			img[row][col]=T[img[row][col]]
-
-	#return transformed_img
-
+			
 
 if __name__=='__main__':
 
