@@ -32,8 +32,8 @@ def MedianFilter(img):
 
 if __name__=='__main__':
 
-	img=cv2.imread('q3_input.jpg')
-	img=cv2.split(img)[0]
+	img=cv2.imread('3.jpg')
+	img=cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 	final1=GaussianFilter(img)
 

@@ -27,7 +27,7 @@ def hist_equalise(img):
 
 if __name__=='__main__':
 
-	img=cv2.imread('q1_input.jpg')
+	img=cv2.imread('1.jpg')
 	img_blue,img_green,img_red=cv2.split(img)
 
 	hist_equalise(img_blue)

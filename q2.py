@@ -1,25 +1,18 @@
 import numpy as np 
 import cv2
 
-def point_process(point,gamma):
-	
-	L=256
-	c=(L-1)**(1-gamma)
-	return int(c*(point**gamma))
-
-
 def gamma_transform(img,gamma):
 
 	N,M=img.shape
-	
+
 	for row in range(N):
 		for col in range(M):
-			img[row][col]=point_process(img[row][col],gamma)
+			img[row][col]=255.0*(img[row][col]/255.0)**gamma
 
 
 if __name__=='__main__':
 
-	img=cv2.imread('q1_input.jpg')
+	img=cv2.imread('1.jpg')
 	img_blue,img_green,img_red=cv2.split(img)
 
 	gamma_transform(img_blue,5)

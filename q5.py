@@ -9,7 +9,7 @@ def D(u,v,P,Q):
 def IdealFilter(f):
 
 	N,M=f.shape
-	D0=225
+	D0=300
 	H=np.zeros([N,M])
 
 	for row in range(N):
@@ -24,8 +24,8 @@ def IdealFilter(f):
 def ButterworthFilter(f):
 
 	N,M=f.shape
-	D0=225
-	n=2
+	D0=300
+	n=3
 	H=np.zeros([N,M])
 
 	for row in range(N):
@@ -38,7 +38,7 @@ def ButterworthFilter(f):
 def GaussianFilter(f):
 
 	N,M=f.shape
-	D0=225
+	D0=300
 	H=np.zeros([N,M])
 
 	for row in range(N):
@@ -51,8 +51,9 @@ def GaussianFilter(f):
 
 if __name__=='__main__':
 
-	img=cv2.imread('q5_input.jpg')
-	img=cv2.split(img)[0]
+	img=cv2.imread('3.jpg')
+	img=cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+	img=cv2.resize(img,(img.shape[1]/4,img.shape[0]/4))
 
 	#ideal low pass filter
 
