@@ -21,7 +21,6 @@ def create_haar_matrix(N):
 
 	H=np.zeros([N,N])
 
-
 	for i in range(N):
 
 		k=i
@@ -32,10 +31,6 @@ def create_haar_matrix(N):
 			q=k-2**p+1
 
 			z=float(j)/N
-
-#			print k,p,q,z
-
-#			print float(q-1)/(2.0**p),float(q-0.5)/(2.0**p),float(q)/(2.0**p)
 
 			if k==p==q==0:
 				H[i][j]=1
@@ -67,9 +62,7 @@ if __name__=='__main__':
 	X=2**N.bit_length()
 	img=np.pad(img,(X-N,0),'constant',constant_values=0)
 
-	#cv2.imwrite('sample.jpg',img)
-
 	H=create_haar_matrix(X)
-	#print H
-	img=np.dot(np.dot(H,img),H)
+
+	img=np.matmul(np.matmul(H,img),H)
 	cv2.imwrite('q6_output.jpg',img)
