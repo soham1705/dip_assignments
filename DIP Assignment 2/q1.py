@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def histogramify(mat,img_name):
+def histogramify(mat,img_name,title):
 
 	dic=dict()
 	N,M=mat.shape
@@ -17,13 +17,15 @@ def histogramify(mat,img_name):
 			else:
 				dic[mat[i][j]]=1
 
-	#print dic
+	fig=plt.figure()
+	fig.suptitle(title)
 	plt.bar(range(len(dic)), dic.values(), align='center')
 	plt.savefig(img_name)
+	#plt.show()
 	plt.clf()
 
 
-def histogramify2(mat,img_name):
+def histogramify2(mat,img_name,title):
 
 	dic=dict()
 	N,M=mat.shape
@@ -36,15 +38,17 @@ def histogramify2(mat,img_name):
 
 	dic = list(chain.from_iterable([k]*v for k, v in dic.items()))
 	bins=np.arange(0,1.01,0.01)
+	fig=plt.figure()
+	fig.suptitle(title)
 	plt.hist(dic,bins=bins)
 	plt.savefig(img_name)
+	#plt.show()
 	plt.clf()
 
 
 if __name__=='__main__':
 
 	img=cv2.imread('anadka.jpg')
-	#img=cv2.resize(img,(img.shape[1]/4,img.shape[0]/4))
 	b,g,r=cv2.split(img)
 	N,M=b.shape
 
@@ -73,7 +77,7 @@ if __name__=='__main__':
 					H[i][j]=2*np.pi-theta
 				H[i][j]=int(H[i][j]*360/(2*np.pi))
 
-	histogramify(H,'q1_output_hue.png')
-	histogramify2(S,'q1_output_saturation.png')
-	histogramify(I,'q1_output_intensity.png')
+	histogramify(H,'q1_output_hue.png','Q1. Hue Histogram')
+	histogramify2(S,'q1_output_saturation.png','Q1. Saturation Histogram')
+	histogramify(I,'q1_output_intensity.png','Q1. Intensity Histogram')
 

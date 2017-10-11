@@ -31,15 +31,22 @@ def huffman(arr):
 				del(p[x])
 				break
 
+	
+
 
 if __name__=='__main__':
 
 	img=cv2.imread('kudremukha.jpg')
 	img=cv2.split(img)[0]
 
-	#img=run_length(img,3)
+	img=run_length(img,3)
 
-	huffman(img[:,0])
+	N,M=img.shape
 
-	#cv2.imwrite('sample.jpg',img)
+	#for i in range(M):
+	#	huffman(img[:,i])
+
+	font=cv2.FONT_HERSHEY_SIMPLEX
+	cv2.putText(img,'Q4. Output',(200,100),font,4,(255,255,255),4,cv2.LINE_AA)
+	cv2.imwrite('q4_output.jpg',img)
 	

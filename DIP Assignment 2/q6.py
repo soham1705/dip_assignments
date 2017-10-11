@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 
-
 def downsample(img,n):
 
 	N,M=img.shape
@@ -65,4 +64,7 @@ if __name__=='__main__':
 	H=create_haar_matrix(X)
 
 	img=np.matmul(np.matmul(H,img),H)
+	
+	font=cv2.FONT_HERSHEY_SIMPLEX
+	cv2.putText(img,'Q6. Output',(200,50),font,0.8,(255,255,255),2,cv2.LINE_AA)
 	cv2.imwrite('q6_output.jpg',img)
